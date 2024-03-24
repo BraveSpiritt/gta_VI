@@ -1,4 +1,3 @@
-import { useForm, SubmitHandler } from "react-hook-form";
 import { useState } from "react";
 
 import styles from "./Home.module.css";
@@ -9,9 +8,8 @@ interface IFormState {
 }
 
 function Home() {
-  const { register, handleSubmit } = useForm<IFormState>();
   const [isSuccess, setIsSuccess] = useState(false);
-  const onSubmit: SubmitHandler<IFormState> = (data: IFormState) => {
+  const onSubmit = (data: IFormState) => {
     console.log(data)
     setIsSuccess(!isSuccess);
   };
@@ -19,19 +17,17 @@ function Home() {
   return (
     <>
       <div className={styles.wrapper}>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={() => onSubmit}>
           {isSuccess ? (
             <div className={styles.success}>Form is submitted !</div>
           ) : (
             <>
               <h1>GTA 6 - leave a request </h1>
               <input
-                {...register("name")}
                 type="text"
                 placeholder="Enter your name:"
               />
               <input
-                {...register("email")}
                 type="email"
                 placeholder="Enter your email:"
               />
