@@ -2,10 +2,6 @@ import { SyntheticEvent, useState } from "react";
 
 import styles from "./Home.module.css";
 
-interface IFormState {
-  name: string;
-  email: string;
-}
 
 function Home() {
   const [isSuccess, setIsSuccess] = useState(false);
