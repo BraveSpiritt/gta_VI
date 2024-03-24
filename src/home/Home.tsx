@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { SyntheticEvent, useState } from "react";
 
 import styles from "./Home.module.css";
 
@@ -9,15 +9,15 @@ interface IFormState {
 
 function Home() {
   const [isSuccess, setIsSuccess] = useState(false);
-  const onSubmit = (data: IFormState) => {
-    console.log(data)
+  const onSubmit = (event: SyntheticEvent) => {
+    event.preventDefault();
     setIsSuccess(!isSuccess);
   };
 
   return (
     <>
       <div className={styles.wrapper}>
-        <form onSubmit={() => onSubmit}>
+        <form >
           {isSuccess ? (
             <div className={styles.success}>Form is submitted !</div>
           ) : (
@@ -31,7 +31,7 @@ function Home() {
                 type="email"
                 placeholder="Enter your email:"
               />
-              <button>Submit</button>
+              <button onClick={onSubmit}>Submit</button>
             </>
           )}
         </form>
