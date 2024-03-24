@@ -11,7 +11,8 @@ interface IFormState {
 function Home() {
   const { register, handleSubmit } = useForm<IFormState>();
   const [isSuccess, setIsSuccess] = useState(false);
-  const onSubmit: SubmitHandler<IFormState> = (data) => {
+  const onSubmit: SubmitHandler<IFormState> = (data: IFormState) => {
+    console.log(data)
     setIsSuccess(!isSuccess);
   };
 
